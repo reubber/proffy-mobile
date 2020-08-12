@@ -2,7 +2,6 @@ import React from 'react'
 import {Image, View, Text } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 
-import heartOutLineIcon from '../../assets/images/icons/heart-outline.png'
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png'
 import whatsappIcon from '../../assets/images/icons/whatsapp.png'
 
@@ -14,7 +13,7 @@ function TeacherItem() {
       <View style={styles.profile}> 
         <Image
           style={styles.avatar}
-          source={{uri:'https://github.com/diego3g.png'}}
+          source={{uri:'https://avatars2.githubusercontent.com/u/16036604?s=460&u=0719ee6fa805deafb905ed3af1ab717b9e0d3bf9&v=4'}}
         />
 
         <View style={styles.profileInfo}>
@@ -22,7 +21,7 @@ function TeacherItem() {
           <Text style={styles.subject}>Quimaca</Text>
         </View>
       </View>
-        
+
       <Text style={styles.bio}>
         Entusiasta das melhores tecnologias de química avançada.
         {'\n'}{'\n'}
