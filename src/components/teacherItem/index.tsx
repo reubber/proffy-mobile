@@ -13,7 +13,7 @@ function TeacherItem() {
       <View style={styles.profile}> 
         <Image
           style={styles.avatar}
-          source={{uri:'https://avatars2.githubusercontent.com/u/16036604?s=460&u=0719ee6fa805deafb905ed3af1ab717b9e0d3bf9&v=4'}}
+          source={{uri:'https://avatars3.githubusercontent.com/u/16036604?s=460&u=a978028c402bf7ab0002eb08b99677cc03cc16da&v=4'}}
         />
 
         <View style={styles.profileInfo}>
