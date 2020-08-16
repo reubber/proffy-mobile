@@ -7,32 +7,44 @@ import whatsappIcon from '../../assets/images/icons/whatsapp.png'
 
 import styles from './styles'
 
-function TeacherItem() {
+export interface Teacher {
+  
+  id: number,
+  subject: string,
+  cost: number,
+  name: string,
+  avatar: string,
+  whatsapp: string,
+  bio: string
+
+}
+
+interface TeacherItemProps {
+teacher: Teacher
+}
+
+
+const TeacherItem: React.FC<TeacherItemProps> = ({teacher}) => {
   return (
     <View style={styles.container}>
       <View style={styles.profile}> 
         <Image
           style={styles.avatar}
-          source={{uri:'https://avatars3.githubusercontent.com/u/16036604?s=460&u=a978028c402bf7ab0002eb08b99677cc03cc16da&v=4'}}
+          source={{uri: teacher.avatar}}
         />
 
         <View style={styles.profileInfo}>
-          <Text style={styles.name}>Reubber</Text>
-          <Text style={styles.subject}>Quimaca</Text>
+          <Text style={styles.name}>{teacher.name}</Text>
+          <Text style={styles.subject}>{teacher.subject}</Text>
         </View>
       </View>
 
-      <Text style={styles.bio}>
-        Entusiasta das melhores tecnologias de química avançada.
-        {'\n'}{'\n'}
-        Apaixonado por explodir coisas em laboratio e por mudar a vida das pessoas através de experiencias. Mais de
-        200.000 pessoas já passaram por uma das minhas experiencias.
-      </Text>
+      <Text style={styles.bio}>{teacher.bio}</Text>
          
       <View style={styles.footer}>
         <Text style={styles.price}>
           Preço/hr {'  '} 
-          <Text style={styles.priceValue}>R$ 20,00</Text>
+          <Text style={styles.priceValue}>{teacher.cost}</Text>
         </Text>
 
         <View style={styles.buttonsContainer}>
