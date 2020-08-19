@@ -8,6 +8,7 @@ import whatsappIcon from '../../assets/images/icons/whatsapp.png'
 import heartOutlineIcon from '../../assets/images/icons/heart-outline.png'
 
 import styles from './styles'
+import api from '../../services/api'
 
 export interface Teacher {
   
@@ -32,26 +33,34 @@ const TeacherItem: React.FC<TeacherItemProps> = ({teacher, favorited}) => {
   
   function handleLinkToWpp() {
     Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
-
+    api.post('connections', {
+      user_id: teacher.id
+    })
   }
 
   async function handleToggleFavorite () {
-    if (isFavorited) {
-      // remove from favorites
-    }else {
-      // add from favorites
-      const favorites = await AsyncStorage.getItem('favorites')
-      
-      let favoritesArray = []
+    const favorites = await AsyncStorage.getItem('favorites')
+    let favoritesArray = []
 
       if (favorites){
         favoritesArray = JSON.parse(favorites)
       }
+    
+    
+    if (isFavorited) {
+      const favoriteIndex = favoritesArray.findIndex( (teacherItem:Teacher) => {
+        return teacherItem.id === teacher.id
+      })
+      
+      favoritesArray.splice(favoriteIndex, 1)
 
+      setIsFavorited(false)
+    } else {
+      // add from favorites
       favoritesArray.push(teacher)
-      setIsFavorited(true)
-      await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray)) 
+      setIsFavorited(true) 
     }
+    await AsyncStorage.setItem('favorites', JSON.stringify(favoritesArray))
   }
   
 
